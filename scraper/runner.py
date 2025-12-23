@@ -4,18 +4,13 @@ import time
 import httpx
 from selectolax.parser import HTMLParser
 
-from http_client import fetch
-from pagination import build_page_urls, get_total_pages
-from scraper import extract_products_from_page
-from storage import save_products_to_json
+from scraper.config import BASE_URL, CONCURRENCY, HEADERS
+from scraper.http_client import fetch
+from scraper.pagination import build_page_urls, get_total_pages
+from scraper.parser import extract_products_from_page
+from scraper.storage import save_products_to_json
 
-BASE_URL = "https://books.toscrape.com/"
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",
-}
-CONCURRENCY = 10
-
-async def main():
+async def run():
     start = time.perf_counter()
     sem = asyncio.Semaphore(CONCURRENCY)
 
@@ -40,6 +35,3 @@ async def main():
     print(f"Products: {len(products)}")
     print(f"Saved: {out_path}")
     print(f"Total time: {elapsed:.2f}s")
-
-if __name__ == "__main__":
-    asyncio.run(main())

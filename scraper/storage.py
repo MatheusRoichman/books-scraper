@@ -3,7 +3,7 @@ import os
 import time
 from typing import Iterable
 
-from product import Product
+from scraper.product import Product
 
 def save_products_to_json(products: Iterable[Product], folder: str = "responses") -> str:
     os.makedirs(folder, exist_ok=True)

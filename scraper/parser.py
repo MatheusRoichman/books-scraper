@@ -2,7 +2,7 @@ from decimal import Decimal
 from urllib.parse import urljoin
 from selectolax.parser import HTMLParser
 
-from product import Product
+from scraper.product import Product
 
 RATING_MAP = {"One": 1, "Two": 2, "Three": 3, "Four": 4, "Five": 5}
 
