@@ -5,7 +5,10 @@ from typing import Iterable
 
 from scraper.product import Product
 
-def save_products_to_json(products: Iterable[Product], folder: str = "responses") -> str:
+
+def save_products_to_json(
+    products: Iterable[Product], folder: str = "responses"
+) -> str:
     os.makedirs(folder, exist_ok=True)
     path = os.path.join(folder, f"{time.time()}.json")
 

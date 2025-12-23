@@ -1,5 +1,7 @@
 import asyncio
+
 import httpx
+
 
 async def fetch(client: httpx.AsyncClient, url: str, sem: asyncio.Semaphore) -> str:
     async with sem:

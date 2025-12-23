@@ -1,5 +1,6 @@
 from decimal import Decimal
 from urllib.parse import urljoin
+
 from selectolax.parser import HTMLParser
 
 from scraper.product import Product

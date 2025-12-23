@@ -10,11 +10,14 @@ from scraper.pagination import build_page_urls, get_total_pages
 from scraper.parser import extract_products_from_page
 from scraper.storage import save_products_to_json
 
+
 async def run():
     start = time.perf_counter()
     sem = asyncio.Semaphore(CONCURRENCY)
 
-    async with httpx.AsyncClient(headers=HEADERS, timeout=20, follow_redirects=True) as client:
+    async with httpx.AsyncClient(
+        headers=HEADERS, timeout=20, follow_redirects=True
+    ) as client:
         page1_html = await fetch(client, BASE_URL, sem)
         page1_doc = HTMLParser(page1_html)
 
